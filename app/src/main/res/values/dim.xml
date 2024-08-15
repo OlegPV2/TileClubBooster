@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">20dp</dimen>
+    <dimen name="padding_space">10dp</dimen>
+    <dimen name="margin">15dp</dimen>
+    <dimen name="text_title">14pt</dimen>
+    <dimen name="text_header">8pt</dimen>
+    <dimen name="text_main">6pt</dimen>
+    <dimen name="button_radius_large">8dp</dimen>
+</resources>

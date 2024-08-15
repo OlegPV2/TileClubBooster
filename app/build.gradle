@@ -1,0 +1,45 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.oleg.tileclubbooster'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.oleg.tileclubbooster"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "TileClubBooster.apk"
+                }
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.documentfile
+    implementation libs.constraintlayout
+
+    def shizuku_version = "13.1.5"
+    implementation "dev.rikka.shizuku:api:$shizuku_version"
+    // Add this line if you want to support Shizuku
+    implementation "dev.rikka.shizuku:provider:$shizuku_version"
+}
