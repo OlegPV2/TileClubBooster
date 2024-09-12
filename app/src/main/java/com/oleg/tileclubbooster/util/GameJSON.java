@@ -51,7 +51,7 @@ public class GameJSON {
 		return jString;
 	}
 
-	public static String currentLevel(Context context) {
+	public static String getCurrentLevel(Context context) {
 		try {
 			String a = loadExternalJSON(context, FileTools.tileClubFilesPath, "playerProfile.json");
 			JSONObject names = new JSONObject(a);
@@ -62,7 +62,7 @@ public class GameJSON {
 		return context.getResources().getString(R.string.button_try_again_text);
 	}
 
-	public static String currentLevelFromLevelsData(Context context) {
+	public static String getCurrentLevelFromLevelsData(Context context) {
 		List<String> list = FileTools.getFilesList();
 		List<Integer> integerList = list.stream().map(Integer::valueOf).collect(Collectors.toList());
 		int max = Integer.MIN_VALUE;
@@ -75,15 +75,23 @@ public class GameJSON {
 			String a = loadExternalJSON(context, FileTools.tileClubFilesPath + "LevelsData/", max + ".json");
 			JSONObject b = new JSONObject(a);
 			JSONArray c = b.getJSONArray("subchapters");
-			JSONObject d = c.getJSONObject(c.length()-1);
+			JSONObject d = c.getJSONObject(c.length() - 1);
 			JSONArray e = d.getJSONArray("levels");
 			JSONObject f = e.getJSONObject(e.length() - 1);
-			if (f.getInt("numberOfStars") == -1) f = e.getJSONObject(e.length() - 2);
+			if (f.getInt("numberOfStars") == -1) {
+				try {
+					f = e.getJSONObject(e.length() - 2);
+				} catch (JSONException exception) {
+					d = c.getJSONObject(c.length() - 2);
+					e = d.getJSONArray("levels");
+					f = e.getJSONObject(e.length() - 1);
+				}
+			}
 			return String.valueOf((f.getInt("levelIndex")) + 1);
 		} catch (JSONException e) {
 			Log.e("currentLevel", String.valueOf(e));
 		}
-		return context.getResources().getString(R.string.button_try_again_text);
+		return "0";
 	}
 
 	public static void currentLevelStatusPatch(Context context, String level) {

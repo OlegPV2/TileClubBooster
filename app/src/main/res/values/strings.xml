@@ -13,7 +13,7 @@
     <string name="toast_shizuku_disconnected">Сервис Shizuku отключен</string>
     <string name="toast_shizuku_load_file_failed">Не удалось получить доступ, пожалуйста, повторно авторизуйте Shizuku!</string>
 
-    <string name="button_default_text">Начать</string>
+    <string name="button_default_text">Считываем данные</string>
     <string name="button_try_again_text">Попробуй еще раз</string>
 
     <string name="popupmenu_item1">Автоклик на 3 с</string>

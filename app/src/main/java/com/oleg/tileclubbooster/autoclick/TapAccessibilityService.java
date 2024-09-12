@@ -65,9 +65,9 @@ public class TapAccessibilityService extends AccessibilityService {
 	}
 
 	private void tap(int x, int y) {
-		String level = GameJSON.currentLevelFromLevelsData(App.get());
+		String level = GameJSON.getCurrentLevel(App.get());
 		if (level.equals(App.get().getResources().getString(R.string.button_try_again_text)))
-			level = GameJSON.currentLevelFromLevelsData(App.get());
+			level = GameJSON.getCurrentLevel(App.get());
 		GameJSON.currentLevelStatusPatch(App.get(), level);
 		Path swipePath = new Path();
 		swipePath.moveTo(x, y);

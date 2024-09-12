@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity implements Shizuku.OnRequest
 		if (checkDrawOverlayPermission()) {
 			startOverlayService();
 		}
-		// Check accessibility permission
-		if(!isAccessibilityServiceEnabled(this, TapAccessibilityService.class)){
-			showAccessibilityPermission();
-		}
 		// Check storage permission
 		if (PermissionTools.hasStoragePermission()) {
 			checkPermissionToFiles();
